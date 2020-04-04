@@ -1,0 +1,6 @@
+export const SHOW_ALERT = 'SHOW_ALERT'
+export const SHOW_OK_ALERT = 'SHOW_OK_ALERT'
+export const SHOW_INFO_ALERT = 'SHOW_INFO_ALERT'
+export const SHOW_WARN_ALERT = 'SHOW_WARN_ALERT'
+export const SHOW_ERROR_ALERT = 'SHOW_ERROR_ALERT'
+export const HIDE_ALERT = 'HIDE_ALERT'
