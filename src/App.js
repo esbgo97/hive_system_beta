@@ -1,15 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
+
+//Pages
+import HomePage from './ui/pages/main/Home'
+
+import LoginPage from './ui/pages/auth/Login'
+import SignUpPage from './ui/pages/auth/SignUp'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Hive System Beta
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/Login" component={LoginPage} />
+      <Route exact path="/SignIn" component={SignUpPage} />
+    </Router>
   );
 }
 
