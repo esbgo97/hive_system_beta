@@ -1,8 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 //Routes Type
-import { PrivateRoute } from './PrivateRoute'
+import PrivateRoute from './PrivateRoute'
 
 //Pages
 import Home from '../../ui/pages/main/Home'
@@ -21,25 +21,22 @@ const defaultRoutes = [
     { type: "public", path: "/", name: "Home" },
     { type: "public", path: "/Login", name: "Login" },
     { type: "public", path: "/SignUp", name: "SignUp" },
-    { type: "private", path: "/Dashboard", name: "Dashboard" },
-    
+    // { type: "private", path: "/Dashboard", name: "Dashboard" },    
 ]
 
 
 const Routes = () => {
     let result = defaultRoutes.map((r, i) => {
         if (r.type === "public") {
-            return  <Route path={r.path} exact component={registeredComponents[r.name]} />
+            return  <Route key={i} path={r.path} exact component={registeredComponents[r.name]} />
         } else {
-            return <PrivateRoute key={k} path={r.path} component={registeredComponents[r.name]} />
+            console.log(r)
+            return <PrivateRoute key={i} path={r.path} component={registeredComponents[r.name]} />
         }
     })
-    return (<>{result}</>)
+    return (<Router>
+        {result}
+    </Router>)
 }
 
-const mapStateToProps = (state) => {
-    return {
-        Routes: state.auth.routes || routes
-    }
-}
-export default connect(mapStateToProps)(Routes)
+export default Routes

@@ -9,6 +9,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router'
 import mainReducer from './main/reducers'
 import alertReducer from './alert/reducers'
 import requestReducer from './request/reducers'
+import authReducer from './auth/reducers'
 
 import { getState, saveState } from '../infraestructure/utils/storePersister'
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     main: mainReducer,
     alert: alertReducer,
     request: requestReducer,
+    auth:authReducer,
     router: connectRouter(history),
 })
 

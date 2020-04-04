@@ -19,13 +19,13 @@ const initialState = {
         isOk: false,
         response: null,
     },
-   
+    auth: {
+        isLogged: false,
+        user: null,
+        token:null,
+        routes: []
+    }
 }
-// auth: {
-//     isLogged: false,
-//     userInfo: null,
-//     routes: []
-// },
 
 export const getState = () => {
     try {
