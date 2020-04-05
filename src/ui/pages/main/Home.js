@@ -7,15 +7,15 @@ const HomePage = (props) => {
     console.log(props)
     return (<EmptyTemplate title="Welcome to Hive System">
         <Row>
-            <Col span={12} offset={6}>
-                {/* <Button type="primary"
-                        onClick={() => props.navigation.navigate("/Login")}>
+            <Col offset={9} >
+                <Button type="primary"
+                        onClick={() => props.history.push("/Login")}>
                         Login Here!
                         </Button>
                     <Button type="link"
-                        onClick={() => props.navigation.navigate("/SignUp")}>
+                        onClick={() => props.history.push("/SignUp")}>
                         or Sign Up Here!
-                     </Button> */}
+                     </Button>
             </Col>
         </Row>
     </EmptyTemplate>)

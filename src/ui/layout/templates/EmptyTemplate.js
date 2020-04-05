@@ -1,13 +1,14 @@
 import React from 'react'
-import { Layout, Typography, } from 'antd'
-const {Title} = Typography
+import { Layout } from 'antd'
+import AppFooter from '../partials/AppFooter'
+import AppHeader from '../partials/AppHeader'
 export const EmptyTemplate = (props) => {
-    return (<Layout>
-        <Layout.Header >
-    <Typography.Title>{props.title || "Hive System"}</Typography.Title>
-           {/* <Title>{props.title}</Title> */}
-        </Layout.Header>
-        <Layout.Content>{props.children}</Layout.Content>
-        <Layout.Footer></Layout.Footer>
+    return (<Layout className="full-height">
+        <AppHeader title={props.title}/>
+        <Layout.Content className="full-height">
+            <br />
+            {props.children}
+        </Layout.Content>
+      <AppFooter/>
     </Layout>)
 }
