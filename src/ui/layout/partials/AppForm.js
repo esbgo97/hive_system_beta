@@ -1,42 +1,58 @@
-import React from 'react'
-import { Card, Form, Input, Checkbox, Button, Icon } from 'antd'
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import React, { useState } from 'react'
+import { Card, Form, Button, Typography } from 'antd'
+import { AppTextInput, AppCheckInput, AppDateInput } from './AppInputs'
 
 const AppForm = (props) => {
-    const handleSubmit = (val) => {
-        val.preventDefault()
-        console.log(val)
+    const [formData, setFormData] = useState({})
+
+    const handleInputs = (prop, val) => {
+        setFormData({
+            ...formData,
+            [prop]: val
+        })
     }
 
-    return <Card title="Ingreso" style={{ textAlign: "center" }}>
+    return <Card title={props.title}
+        style={{ textAlign: "center", width: props.width || "max-content" }}
+        actions={[
+            <Button type="link" htmlType="button" onClick={props.onCancel}>Sign Up</Button>,
+            <Button type="primary" htmlType="button"  onClick={() => props.onAccept(formData)} >Sign In</Button>
 
-        <Form name="Login"
-            onSubmit={handleSubmit}
-            className="login-form">
-            {props.fields ? renderFields(props.fields) :
+        ]}>
+        <Form >
+            {props.fields ? renderFields(props.fields, handleInputs) :
                 "No fields Found!"}
-            <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button">Sign In </Button>
-                <br />
-                <Button type="link" htmlType="submit" className="login-form-button">Sign Up </Button>
-            </Form.Item>
         </Form>
     </Card>
 
 }
 
-const renderFields = (fields) => {
+const renderFields = (fields, onChange) => {
     return (<>{
         fields.map((field, i) => {
+            field.onChange = onChange
             return <Form.Item
                 key={i}
                 name={field.name}  >
-                <Input placeholder={field.placeholder}
-                    prefix={field.icon && <Icon type={field.icon} />}
-                    type={field.type} />
+                {renderInput(field)}
             </Form.Item>
         })
     }</>)
+}
+const renderInput = (props) => {
+    switch (props.type) {
+        case "text":
+        case "email":
+        case "password":
+        case "number":
+            return <AppTextInput commonProps={props} />
+        case "check":
+            return <AppCheckInput commonProps={props} />
+        case "date":
+            return <AppDateInput commonProps={props} />
+        default:
+            return <Typography.Text>{props.type} type not implemented!</Typography.Text>
+    }
 }
 
 export default AppForm
