@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/hive-system-beta/static/css/main.c6ad1985.chunk.css",
+    "main.js": "/hive-system-beta/static/js/main.c901df2e.chunk.js",
+    "main.js.map": "/hive-system-beta/static/js/main.c901df2e.chunk.js.map",
+    "runtime-main.js": "/hive-system-beta/static/js/runtime-main.1477ddca.js",
+    "runtime-main.js.map": "/hive-system-beta/static/js/runtime-main.1477ddca.js.map",
+    "static/js/2.acfeec17.chunk.js": "/hive-system-beta/static/js/2.acfeec17.chunk.js",
+    "static/js/2.acfeec17.chunk.js.map": "/hive-system-beta/static/js/2.acfeec17.chunk.js.map",
+    "index.html": "/hive-system-beta/index.html",
+    "precache-manifest.f12833d9317ffe770ef43ab91c72a71c.js": "/hive-system-beta/precache-manifest.f12833d9317ffe770ef43ab91c72a71c.js",
+    "service-worker.js": "/hive-system-beta/service-worker.js",
+    "static/css/main.c6ad1985.chunk.css.map": "/hive-system-beta/static/css/main.c6ad1985.chunk.css.map",
+    "static/js/2.acfeec17.chunk.js.LICENSE.txt": "/hive-system-beta/static/js/2.acfeec17.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1477ddca.js",
+    "static/js/2.acfeec17.chunk.js",
+    "static/css/main.c6ad1985.chunk.css",
+    "static/js/main.c901df2e.chunk.js"
+  ]
+}
