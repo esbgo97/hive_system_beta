@@ -4,7 +4,6 @@ import EmptyTemplate from '../../layout/templates/EmptyTemplate'
 import { Button } from 'antd'
 
 const HomePage = (props) => {
-    console.log(props)
     return (<EmptyTemplate title="Welcome to Hive System">
         <br /><br /><br />
         <Button type="primary"

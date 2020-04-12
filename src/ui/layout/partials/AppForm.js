@@ -15,8 +15,8 @@ const AppForm = (props) => {
     return <Card title={props.title}
         style={{ textAlign: "center", width: props.width || "max-content" }}
         actions={[
-            <Button type="link" htmlType="button" onClick={props.onCancel}>Sign Up</Button>,
-            <Button type="primary" htmlType="button"  onClick={() => props.onAccept(formData)} >Sign In</Button>
+            <Button type="link" htmlType="button" onClick={props.onCancel}>CANCEL</Button>,
+            <Button type="primary" htmlType="button"  onClick={() => props.onAccept(formData)} >SEND</Button>
 
         ]}>
         <Form >

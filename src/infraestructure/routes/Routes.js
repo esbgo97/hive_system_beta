@@ -21,7 +21,7 @@ const defaultRoutes = [
     { type: "public", path: "/", name: "Home" },
     { type: "public", path: "/Login", name: "Login" },
     { type: "public", path: "/SignUp", name: "SignUp" },
-    // { type: "private", path: "/Dashboard", name: "Dashboard" },    
+    { type: "private", path: "/Dashboard", name: "Dashboard" },    
 ]
 
 
@@ -30,7 +30,6 @@ const Routes = () => {
         if (r.type === "public") {
             return  <Route key={i} path={r.path} exact component={registeredComponents[r.name]} />
         } else {
-            console.log(r)
             return <PrivateRoute key={i} path={r.path} component={registeredComponents[r.name]} />
         }
     })

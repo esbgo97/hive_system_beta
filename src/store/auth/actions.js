@@ -2,6 +2,7 @@ import { SIGN_IN, SIGN_OUT } from "./types"
 import AuthService from '../../services/authService'
 import { StartRequest, EndRequest } from "../request/actions"
 import { ShowErrorAlert } from "../alert/actions"
+import { push } from "connected-react-router"
 
 const serviceInstance = new AuthService()
 export const SignIn = (user, pass) => {
@@ -9,17 +10,17 @@ export const SignIn = (user, pass) => {
         let resp = null
         let isOk = true;
         try {
-            dispatch(StartRequest("Login In...", "firebase/auth", { user, pass }))
+            dispatch(StartRequest("Loging In...", "firebase/auth", { user, pass }))
             resp = await serviceInstance.singIn(user, pass)
-            console.log(resp)
+
             dispatch({
                 type: SIGN_IN,
                 payload: {
-                    user: {},
-                    token: "prueba",
-
+                    user: resp.user,
+                    token: resp.user.uid,
                 }
             })
+            dispatch(push("/Dashboard"))
         } catch (err) {
             dispatch(ShowErrorAlert(err.message))
             isOk = false
@@ -31,10 +32,33 @@ export const SignIn = (user, pass) => {
     }
 }
 
+export const SignUp = (email, pass) => {
+    return async (dispatch) => {
+        try {
+            dispatch(StartRequest("Siging Up...", "firebase/auth"))
+            let resp = await serviceInstance.signUp(email, pass)
+
+            dispatch({
+                type: SIGN_IN,
+                payload: {
+                    user: resp.user,
+                    token: resp.user,
+
+                }
+            })
+        } catch (err) {
+            console.log(err)
+            dispatch(ShowErrorAlert(err.message))
+        } finally {
+            dispatch(EndRequest())
+        }
+    }
+}
+
 export const SignOut = () => {
     return async (dispatch) => {
         try {
-            dispatch(StartRequest("Sign Out...", "firebase/auth"))
+            dispatch(StartRequest("Signing Out...", "firebase/auth"))
             await serviceInstance.singOut()
             dispatch({ type: SIGN_OUT })
         }

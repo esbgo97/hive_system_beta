@@ -1,7 +1,6 @@
 import React from 'react'
 import EmptyTemplate from '../../layout/templates/EmptyTemplate'
 import AppForm from '../../layout/partials/AppForm';
-import { Icon } from 'antd'
 import { connect } from 'react-redux';
 import { SignIn } from '../../../store/auth/actions';
 import { ShowWarnAlert } from '../../../store/alert/actions';
@@ -27,7 +26,6 @@ const LoginPage = (props) => {
         }
     ]
     const handleSubmit = async (data) => {
-        console.log(data)
         if (data.email === "" || data.pass === "") {
             props.showWarn("Please complete the form!")
             return
@@ -44,7 +42,6 @@ const LoginPage = (props) => {
             fields={formFields}
             onAccept={handleSubmit}
             onCancel={handleCancel} />
-        <Icon type="closecircle" />
     </EmptyTemplate>)
 }
 const mapDispatchToProps = (dispatch) => {

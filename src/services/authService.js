@@ -9,9 +9,12 @@ export default class AuthService {
     singIn = (email, pass) => {
         return this.authContext.signInWithEmailAndPassword(email, pass)
     }
+    signUp = (email, pass) => {
+        return this.authContext.createUserWithEmailAndPassword(email, pass)
+    }
 
     singOut = () => {
-        return this.authContext.singOut()
+        return this.authContext.signOut()
     }
 
     currentUser = () => {
