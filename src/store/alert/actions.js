@@ -9,6 +9,9 @@ export const ShowAlert = (type, message) => {
                 message
             }
         })
+        setTimeout(() => {
+            dispatch(HideAlert())
+        }, 5000)
     }
 }
 
@@ -25,10 +28,13 @@ export const ShowOkAlert = (message) => {
         dispatch({
             type: HIDE_ALERT,
             payload: {
-                type:"success",
+                type: "success",
                 message
             }
         })
+        setTimeout(() => {
+            dispatch(HideAlert())
+        }, 5000)
     }
 }
 
@@ -41,6 +47,9 @@ export const ShowInfoAlert = (message) => {
                 message
             }
         })
+        setTimeout(() => {
+            dispatch(HideAlert())
+        }, 5000)
     }
 }
 
@@ -53,6 +62,9 @@ export const ShowWarnAlert = (message) => {
                 message
             }
         })
+        setTimeout(() => {
+            dispatch(HideAlert())
+        }, 5000)
     }
 }
 
@@ -65,5 +77,8 @@ export const ShowErrorAlert = (message) => {
                 message
             }
         })
+        setTimeout(() => {
+            dispatch(HideAlert())
+        }, 5000)
     }
 }

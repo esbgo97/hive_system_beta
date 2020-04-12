@@ -1,7 +1,10 @@
 import React from 'react'
-import { withRouter } from 'react-router'
-import { EmptyTemplate } from '../../layout/templates/EmptyTemplate'
+import EmptyTemplate from '../../layout/templates/EmptyTemplate'
 import AppForm from '../../layout/partials/AppForm';
+import { Icon } from 'antd'
+import { connect } from 'react-redux';
+import { SignIn } from '../../../store/auth/actions';
+import { ShowWarnAlert } from '../../../store/alert/actions';
 
 const LoginPage = (props) => {
     const formFields = [
@@ -23,8 +26,13 @@ const LoginPage = (props) => {
             type: "check",
         }
     ]
-    const handleSubmit = (data) => {
+    const handleSubmit = async (data) => {
         console.log(data)
+        if (data.email === "" || data.pass === "") {
+            props.showWarn("Please complete the form!")
+            return
+        }
+        props.signIn(data.email, data.pass)
     }
     const handleCancel = () => {
         props.history.push("/SignUp")
@@ -36,7 +44,14 @@ const LoginPage = (props) => {
             fields={formFields}
             onAccept={handleSubmit}
             onCancel={handleCancel} />
+        <Icon type="closecircle" />
     </EmptyTemplate>)
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        signIn: (email, pass) => dispatch(SignIn(email, pass)),
+        showWarn: (message) => dispatch(ShowWarnAlert(message))
+    }
 
-export default withRouter(LoginPage)
+}
+export default connect(null, mapDispatchToProps)(LoginPage)

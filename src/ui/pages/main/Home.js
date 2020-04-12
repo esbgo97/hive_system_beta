@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import { EmptyTemplate } from '../../layout/templates/EmptyTemplate'
+import EmptyTemplate from '../../layout/templates/EmptyTemplate'
 import { Button } from 'antd'
 
 const HomePage = (props) => {
