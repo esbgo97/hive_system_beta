@@ -8,22 +8,22 @@ import { connect } from 'react-redux'
 import AppAlert from '../partials/AppAlert'
 
 const EmptyTemplate = (props) => {
+    if (props.isLoading)
+        return <AppLoading />
     return (<Layout >
+
         <AppHeader title={props.title} />
         <AppAlert />
-        {
-            props.isLoading ?
-                <AppLoading />
-                : <AppContent>
-                    {props.children}
-                </AppContent>
-        }
+        <AppContent>
+            {props.children}
+        </AppContent>
         <AppFooter />
     </Layout>)
 }
 const mapStateToProps = (state) => {
     return {
-        isLoading: state.main.isLoading
+        isLoading: state.main.isLoading,
+        isLogged: state.auth.isLogged
     }
 }
 export default connect(mapStateToProps)(EmptyTemplate)

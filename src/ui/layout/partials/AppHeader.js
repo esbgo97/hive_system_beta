@@ -1,13 +1,22 @@
 import React from 'react'
-import { Layout, Row, Col } from 'antd'
+import { Layout, Row, Col, Button } from 'antd'
 import { connect } from 'react-redux'
 import AppUserOptions from './AppUserOptions'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import { ToggleMenu } from '../../../store/main/actions'
 
-const { Header } = Layout
 
 const AppHeader = (props) => {
-    return (<Header className="header">
+    return (<Layout.Header className="header">
         <Row>
+            {
+                props.isLogged && <Col span={2}>
+                    <Button type="primary" onClick={props.toggleMenu}>
+                        {props.showMenu ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+                    </Button>
+                </Col>
+            }
+
             <Col span={10}>
                 {props.title}
             </Col>
@@ -19,11 +28,18 @@ const AppHeader = (props) => {
                 }
             </Col>
         </Row>
-    </Header>)
+    </Layout.Header>)
 }
 const mapStateToProps = (state) => {
     return {
-        isLogged: state.auth.isLogged
+        showMenu: state.main.showMenu,
+        isLogged: state.auth.isLogged,
     }
 }
-export default connect(mapStateToProps)(AppHeader)
+const mapDispatch = (dispatch) => {
+    return {
+        toggleMenu: () => dispatch(ToggleMenu())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatch)(AppHeader)

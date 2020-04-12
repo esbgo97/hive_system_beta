@@ -1,6 +1,7 @@
 const initialState = {
     main: {
         isLoading: false,
+        showMenu: false,
         message: "",
         notification: {
             show: false,
@@ -22,7 +23,7 @@ const initialState = {
     auth: {
         isLogged: false,
         user: null,
-        token:null,
+        token: null,
         routes: []
     }
 }

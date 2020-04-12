@@ -1,7 +1,7 @@
 import { getState } from '../../infraestructure/utils/storePersister'
 import {
     SHOW_LOADING, HIDE_LOADING,
-    SHOW_NOTIFICATION, HIDE_NOTIFICATION
+    SHOW_NOTIFICATION, HIDE_NOTIFICATION, TOGGLE_MENU
 } from "./types"
 
 const initialState = getState().main
@@ -39,6 +39,11 @@ const mainReducer = (state = initialState, action) => {
                     show: false,
                     message: ""
                 }
+            }
+        case TOGGLE_MENU:
+            return {
+                ...state,
+                showMenu: !state.showMenu
             }
 
         default:

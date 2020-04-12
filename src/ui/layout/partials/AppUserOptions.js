@@ -5,18 +5,15 @@ import { UserOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons
 import { SignOut } from '../../../store/auth/actions';
 
 const AppUserOptions = (props) => {
-console.log(props)
     return (<Dropdown overlay={
         <Menu>
             <Menu.Item>
-                <a target="_blank" >
-                    <UserOutlined /> Profile
-                </a>
+                <UserOutlined />
+                <span>Profile</span>
             </Menu.Item>
             <Menu.Item>
-                <a target="_blank" >
-                    <SettingOutlined /> Settings
-                </a>
+                <SettingOutlined />
+                <span>Settings</span>
             </Menu.Item>
             <Menu.Item>
                 <label onClick={props.onSignOut}>
@@ -25,7 +22,7 @@ console.log(props)
             </Menu.Item>
         </Menu>
     }>
-        <Avatar shape="square" icon={<UserOutlined />} />
+        <Avatar shape="circle" icon={<UserOutlined />} />
 
     </Dropdown>)
 }
@@ -34,4 +31,4 @@ const mapDispatchToProps = (dispatch) => {
         onSignOut: () => dispatch(SignOut())
     }
 }
-export default connect(null,mapDispatchToProps)(AppUserOptions)
+export default connect(null, mapDispatchToProps)(AppUserOptions)

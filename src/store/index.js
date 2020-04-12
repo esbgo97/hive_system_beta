@@ -32,7 +32,7 @@ export const configureStore = () => {
         initialState,
         applyMiddleware(
             thunkMiddleware,
-         //   logger,
+            logger,
             routerMiddleware(history)
         )
     )

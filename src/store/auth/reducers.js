@@ -9,6 +9,7 @@ const authReducer = (state = getState().auth, action) => {
                 isLogged: true,
                 user: action.payload.user,
                 token: action.payload.token,
+                routes:action.payload.routes
             }
 
         case SIGN_OUT:

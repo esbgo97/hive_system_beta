@@ -18,6 +18,7 @@ export const SignIn = (user, pass) => {
                 payload: {
                     user: resp.user,
                     token: resp.user.uid,
+                    routes: [{ name: "Dashboard", path: "/Dashboard" }]
                 }
             })
             dispatch(push("/Dashboard"))
